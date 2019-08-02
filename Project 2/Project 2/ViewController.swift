@@ -38,6 +38,10 @@ class ViewController: UIViewController {
         
         navBar.title = "\(score)"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score", style: .done, target: self, action: #selector(showScore))
+//            UIBarButtonItem(image: UIImage(systemName: "s.circle.fill"), style: .done, target: self, action: #selector(showScore))
+//            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showScore))
+        
         askQuestion()
     }
     
@@ -88,6 +92,14 @@ class ViewController: UIViewController {
         }
         
         
+    }
+    
+    
+    @objc func showScore(){
+        navigationItem.rightBarButtonItem?.title = "\(self.score)"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+            self.navigationItem.rightBarButtonItem?.title = "Score"
+        })
     }
     
     
